@@ -91,15 +91,16 @@ eliza: Eliza = Eliza()
 
 @app.websocket("/ws/{client_id}")
 async def websocket_endpoint(websocket: WebSocket):
-    await manager.connect(websocket)
-    try:
-        await manager.reply(eliza.greeting(), websocket)
-        while True:
-            data: str = await websocket.receive_text()
-            if data == "quit":
-                await manager.quit(eliza.response(data), websocket)
-                break
-            else:
-                await manager.reply(eliza.response(data), websocket)
-    except WebSocketDisconnect:
-        manager.disconnect(websocket)
+    if websocket.headers["origin"] == environ["ALLOWED_ORIGIN"]:
+        await manager.connect(websocket)
+        try:
+            await manager.reply(eliza.greeting(), websocket)
+            while True:
+                data: str = await websocket.receive_text()
+                if data == "quit":
+                    await manager.quit(eliza.response(data), websocket)
+                    break
+                else:
+                    await manager.reply(eliza.response(data), websocket)
+        except WebSocketDisconnect:
+            manager.disconnect(websocket)
