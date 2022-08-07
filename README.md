@@ -6,10 +6,12 @@ with FastAPI websockets.
 Check out [SPA](https://super16.github.io/eliza-chatbot/) which using this application
 and its [source](https://github.com/super16/eliza-chatbot).
 
-## Preparation
+## Prepare environment
 
 ```bash
-pip3 install requirements.txt
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
 ```
 
 ## Testing
@@ -21,5 +23,5 @@ python3 eliza.py
 ## Development Run
 
 ```bash
-ALLOWED_HOST="localhost" ALLOWED_ORIGIN="http://localhost:3000" uvicorn main:app --reload
+ALLOWED_HOST="localhost" ALLOWED_ORIGIN="http://127.0.0.1:5173" uvicorn main:app --reload
 ```
