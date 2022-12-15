@@ -8,20 +8,27 @@ and its [source](https://github.com/super16/eliza-chatbot).
 
 ## Prepare environment
 
+Requires [poetry](https://python-poetry.org/).
+
 ```bash
-python3 -m venv env
-source env/bin/activate
-pip install -r requirements.txt
+poetry install
 ```
 
-## Testing
+## Lint
 
 ```bash
-python3 eliza.py
+poetry run flake8
+poetry run mypy eliza_chatbot_fastapi
+```
+
+## Test
+
+```bash
+poetry run python eliza_chatbot_fastapi/eliza.py
 ```
 
 ## Development Run
 
 ```bash
-ALLOWED_HOST="localhost" ALLOWED_ORIGIN="http://127.0.0.1:5173" uvicorn main:app --reload
+ALLOWED_HOST="localhost" ALLOWED_ORIGIN="http://127.0.0.1:5173" poetry run uvicorn eliza_chatbot_fastapi.main:app --reload
 ```

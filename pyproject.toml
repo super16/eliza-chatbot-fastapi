@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "eliza-chatbot-fastapi"
+version = "0.1.0"
+description = "Eliza chatbot backend implemented with FastAPI websockets"
+authors = ["super16"]
+readme = "README.md"
+packages = [{include = "eliza_chatbot_fastapi"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.88.0"
+uvicorn = {extras = ["standard"], version = "^0.20.0"}
+nltk = "^3.8"
+flake8 = "^6.0.0"
+mypy = "^0.991"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

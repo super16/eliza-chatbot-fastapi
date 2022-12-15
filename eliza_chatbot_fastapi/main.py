@@ -3,7 +3,7 @@ from typing import List
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
-from eliza import Eliza
+from eliza_chatbot_fastapi.eliza import Eliza
 
 # App section
 
