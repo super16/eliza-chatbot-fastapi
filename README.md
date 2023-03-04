@@ -16,19 +16,19 @@ poetry install
 
 ## Lint
 
-```bash
+```shell
 poetry run flake8
 poetry run mypy eliza_chatbot_fastapi
 ```
 
 ## Test
 
-```bash
+```shell
 poetry run python eliza_chatbot_fastapi/eliza.py
 ```
 
 ## Development Run
 
-```bash
+```shell
 ALLOWED_HOST="localhost" ALLOWED_ORIGIN="http://127.0.0.1:5173" poetry run uvicorn eliza_chatbot_fastapi.main:app --reload
 ```
